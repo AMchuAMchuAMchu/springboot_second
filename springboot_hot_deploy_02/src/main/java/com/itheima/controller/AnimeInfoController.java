@@ -12,22 +12,20 @@ import java.time.format.DateTimeFormatter;
  * BelongsProject ==> springboot_second
  * BelongsPackage ==> com.itheima.controller
  * Version ==> 1.0
- * CreateTime ==> 2022-10-21 06:34:47
+ * CreateTime ==> 2022-10-21 07:14:39
  * Author ==> _02雪乃赤瞳楪祈校条祭_艾米丽可锦木千束木更七草荠_制作委员会_start
  */
 @RequestMapping("/animeInfo")
 @RestController
 public class AnimeInfoController {
 
-
-
     @GetMapping
-    public String salHello(){
+    public String getString01(){
 
         System.out.println("sayHello...");
         System.out.println("sayHello...");
         String format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss").format(LocalDateTime.now());
-        return "sayHello...."+format;
-    }
+        return "sayHello...";
 
+    }
 }
