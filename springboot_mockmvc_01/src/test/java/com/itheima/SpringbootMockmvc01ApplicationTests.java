@@ -23,7 +23,7 @@ class SpringbootMockmvc01ApplicationTests {
     @Test
     void contextLoads() throws Exception {
 
-        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo");
+        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo1");
 
         ResultActions perform = mockMvc.perform(mvc);
 
