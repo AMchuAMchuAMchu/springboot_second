@@ -2,4 +2,4 @@ spring:
   devtools:
     restart:
       enabled: true
-      exclude: com/itheima/controller
+#      exclude: com/**

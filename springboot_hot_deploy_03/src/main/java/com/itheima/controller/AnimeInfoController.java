@@ -25,7 +25,7 @@ public class AnimeInfoController {
         System.out.println("sayHello...");
         System.out.println("sayHello...");
         String format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss").format(LocalDateTime.now());
-        return "sayHello...";
+        return "sayHello..."+format;
 
     }
 }
