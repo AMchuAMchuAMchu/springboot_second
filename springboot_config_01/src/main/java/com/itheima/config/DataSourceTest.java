@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationProperties(prefix = "datasource")
-//@Data
+@Data
 public class DataSourceTest {
 
     private String driverClassName;
