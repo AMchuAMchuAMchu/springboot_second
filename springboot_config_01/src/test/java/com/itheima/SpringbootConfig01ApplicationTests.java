@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @SpringBootTest
 class SpringbootConfig01ApplicationTests {
 
@@ -12,9 +16,15 @@ class SpringbootConfig01ApplicationTests {
     private DataSourceTest dataSourceTest;
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws SQLException {
 
         System.out.println(dataSourceTest);
+
+        DataSource druidDataSource = dataSourceTest.getDruidDataSource();
+
+        Connection connection = druidDataSource.getConnection();
+
+        System.out.println(connection.getMetaData());
 
     }
 
