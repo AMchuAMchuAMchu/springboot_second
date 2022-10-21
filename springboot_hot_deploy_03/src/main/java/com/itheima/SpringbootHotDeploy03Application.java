@@ -8,8 +8,9 @@ public class SpringbootHotDeploy03Application {
 
     public static void main(String[] args) {
 
-        System.setProperty("spring.devtools.restart.enabled","false");
+//        System.setProperty("spring.devtools.restart.enabled","false");
 
+//        System.out.println();
         SpringApplication.run(SpringbootHotDeploy03Application.class, args);
     }
 
