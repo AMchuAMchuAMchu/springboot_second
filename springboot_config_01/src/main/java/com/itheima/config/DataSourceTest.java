@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.util.unit.DataSize;
 import org.springframework.util.unit.DataUnit;
+import org.springframework.validation.annotation.Validated;
 
 import javax.sql.DataSource;
+import javax.validation.constraints.Max;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
@@ -25,6 +27,7 @@ import java.time.temporal.ChronoUnit;
 @Component
 @Data
 @ConfigurationProperties(prefix = "datasource")
+@Validated
 public class DataSourceTest {
 
     private String driverClassName;
@@ -35,9 +38,11 @@ public class DataSourceTest {
 
     private String password;
 
+    @Max(value = 100,message = "超时了....")
     @DurationUnit(ChronoUnit.MINUTES)
     private Duration timeout;
 
+    @Max(value = 100,message = "Stack Overflow && memory flow !!fuck!fuck!!")
     @DataSizeUnit(DataUnit.MEGABYTES)
     private DataSize dataSize;
 
