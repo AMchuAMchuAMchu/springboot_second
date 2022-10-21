@@ -3,10 +3,16 @@ package com.itheima.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.convert.DataSizeUnit;
+import org.springframework.boot.convert.DurationUnit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.util.unit.DataSize;
+import org.springframework.util.unit.DataUnit;
 
 import javax.sql.DataSource;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Description ==> TODO
@@ -17,8 +23,8 @@ import javax.sql.DataSource;
  * Author ==> _02雪乃赤瞳楪祈校条祭_艾米丽可锦木千束木更七草荠_制作委员会_start
  */
 @Component
-@ConfigurationProperties(prefix = "datasource")
 @Data
+@ConfigurationProperties(prefix = "datasource")
 public class DataSourceTest {
 
     private String driverClassName;
@@ -29,12 +35,20 @@ public class DataSourceTest {
 
     private String password;
 
-    @Bean
-    public DataSource getDruidDataSource(){
+    @DurationUnit(ChronoUnit.MINUTES)
+    private Duration timeout;
 
-        return new DruidDataSource();
+    @DataSizeUnit(DataUnit.MEGABYTES)
+    private DataSize dataSize;
 
-    }
+
+//
+//    @Bean
+//    public DataSource getDruidDataSource(){
+//
+//        return new DruidDataSource();
+//
+//    }
 
 
 }

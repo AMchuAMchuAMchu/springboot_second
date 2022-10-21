@@ -20,12 +20,6 @@ class SpringbootConfig01ApplicationTests {
 
         System.out.println(dataSourceTest);
 
-        DataSource druidDataSource = dataSourceTest.getDruidDataSource();
-
-        Connection connection = druidDataSource.getConnection();
-
-        System.out.println(connection.getMetaData());
-
     }
 
 }
