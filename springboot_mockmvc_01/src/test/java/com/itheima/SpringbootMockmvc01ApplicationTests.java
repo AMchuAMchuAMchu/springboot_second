@@ -23,6 +23,23 @@ class SpringbootMockmvc01ApplicationTests {
 
 
     @Test
+    void testJJson() throws Exception {
+
+        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo");
+
+        ResultActions perform = mockMvc.perform(mvc);
+
+        ContentResultMatchers content = MockMvcResultMatchers.content();
+
+        ResultMatcher json = content.json("{\"name\":\"Lycoris recoil\",\"id\":2022}");
+
+        perform.andExpect(json);
+
+
+    }
+
+
+    @Test
     void testString() throws Exception {
 
         MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo");

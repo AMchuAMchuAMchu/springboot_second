@@ -1,5 +1,7 @@
 package com.itheima.controller;
 
+import com.google.gson.Gson;
+import com.itheima.pojo.Anime;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,14 @@ public class AnimeInfoController {
     public String test01(){
 
         System.out.println("Lycoris Recoil && Alicization");
-        return "Lycoris recoil && Alicization";
+
+        Anime anime = new Anime();
+        anime.setId(2022);
+        anime.setName("Lycoris recoil");
+        Gson gson = new Gson();
+        String s = gson.toJson(anime);
+
+//        return "{name01:Lycoris recoil && Alicization}";
+        return  s;
     }
 }
