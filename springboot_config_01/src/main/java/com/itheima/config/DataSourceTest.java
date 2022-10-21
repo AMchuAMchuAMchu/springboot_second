@@ -39,10 +39,16 @@ public class DataSourceTest {
     private String password;
 
     @Max(value = 100,message = "超时了....")
+    private Integer serverTime;
+
+
     @DurationUnit(ChronoUnit.MINUTES)
     private Duration timeout;
 
     @Max(value = 100,message = "Stack Overflow && memory flow !!fuck!fuck!!")
+    private Integer memory;
+
+
     @DataSizeUnit(DataUnit.MEGABYTES)
     private DataSize dataSize;
 
