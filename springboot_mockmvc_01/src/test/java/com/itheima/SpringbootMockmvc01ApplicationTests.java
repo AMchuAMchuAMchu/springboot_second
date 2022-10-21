@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.ContentResultMatchers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.result.StatusResultMatchers;
 
@@ -20,10 +21,30 @@ class SpringbootMockmvc01ApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
+
+    @Test
+    void testString() throws Exception {
+
+        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo");
+
+        ResultActions perform = mockMvc.perform(mvc);
+
+        ContentResultMatchers content = MockMvcResultMatchers.content();
+
+        ResultMatcher string = content.string("Lycoris recoil && Alicization");
+
+        perform.andExpect(string);
+
+
+
+    }
+
+
+
     @Test
     void contextLoads() throws Exception {
 
-        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo1");
+        MockHttpServletRequestBuilder mvc = MockMvcRequestBuilders.get("/animeInfo");
 
         ResultActions perform = mockMvc.perform(mvc);
 
