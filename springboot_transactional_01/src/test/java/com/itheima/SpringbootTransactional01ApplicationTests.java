@@ -22,14 +22,26 @@ class SpringbootTransactional01ApplicationTests {
         AnimeInfo animeInfo = new AnimeInfo();
         animeInfo.setName("在地下城邂逅是否搞错了什么...");
         animeInfo.setReleaseTime(2015);
-        animeInfo.setCharacter01("贝尔克朗尼松冈祯丞02");
-//        int i = 10/0;
-        animeInfo.setCharacter02("希尔石上静香02");
+        animeInfo.setCharacter01("贝尔克朗尼松冈祯丞03");
+        animeInfo.setCharacter02("希尔石上静香03");
 
         animeInfo.setId(33);
 //        Integer integer = animeInfoDao.insertOne(animeInfo);
         Integer integer = animeInfoDao.updateById(animeInfo);
-        System.out.println(">>>"+integer);
+
+                int i = 10/0;
+
+
+
+        AnimeInfo animeInfo02 = new AnimeInfo();
+        animeInfo02.setName("在地下城邂逅是否搞错了什么...");
+        animeInfo02.setReleaseTime(2015);
+        animeInfo02.setCharacter01("贝尔克朗尼松冈祯丞04");
+        animeInfo02.setCharacter02("希尔石上静香04");
+
+        animeInfo02.setId(34);
+//        Integer integer = animeInfoDao.insertOne(animeInfo);
+        Integer integer02 = animeInfoDao.updateById(animeInfo);
 
 
     }
