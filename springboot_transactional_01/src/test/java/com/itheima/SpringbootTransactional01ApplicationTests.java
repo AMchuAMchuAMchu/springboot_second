@@ -5,10 +5,12 @@ import com.itheima.pojo.AnimeInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 class SpringbootTransactional01ApplicationTests {
 
     @Autowired
@@ -22,8 +24,8 @@ class SpringbootTransactional01ApplicationTests {
         AnimeInfo animeInfo = new AnimeInfo();
         animeInfo.setName("在地下城邂逅是否搞错了什么...");
         animeInfo.setReleaseTime(2015);
-        animeInfo.setCharacter01("贝尔克朗尼松冈祯丞03");
-        animeInfo.setCharacter02("希尔石上静香03");
+        animeInfo.setCharacter01("贝尔克朗尼松冈祯丞04");
+        animeInfo.setCharacter02("希尔石上静香04");
 
         animeInfo.setId(33);
 //        Integer integer = animeInfoDao.insertOne(animeInfo);
