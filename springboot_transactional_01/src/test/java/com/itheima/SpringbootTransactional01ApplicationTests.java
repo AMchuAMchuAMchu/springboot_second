@@ -1,5 +1,6 @@
 package com.itheima;
 
+import com.itheima.config.AnimeConfig;
 import com.itheima.dao.AnimeInfoDao;
 import com.itheima.pojo.AnimeInfo;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,15 @@ class SpringbootTransactional01ApplicationTests {
     @Autowired
     private AnimeInfoDao animeInfoDao;
 
+    @Autowired
+    private AnimeConfig animeConfig;
 
+    @Test
+    void testAnimeConfig(){
+
+        System.out.println(animeConfig);
+
+    }
 
     @Test
     void contextLoads() {
@@ -31,7 +40,7 @@ class SpringbootTransactional01ApplicationTests {
 //        Integer integer = animeInfoDao.insertOne(animeInfo);
         Integer integer = animeInfoDao.updateById(animeInfo);
 
-                int i = 10/0;
+//                int i = 10/0;
 
 
 
