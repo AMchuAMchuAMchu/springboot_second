@@ -3,12 +3,11 @@ package com.itheima;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.SetOperations;
-import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @SpringBootTest
@@ -17,6 +16,30 @@ class SpringbootRedis01ApplicationTests {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
+
+    @Test
+    void testHash(){
+
+        HashOperations<String, Object, Object> sooho = redisTemplate.opsForHash();
+
+
+        Map<String, String> animeMap = new HashMap<>();
+
+        animeMap.put("name01","Alicization");
+        animeMap.put("name02","guilty crown");
+
+        animeMap.put("time","2011");
+
+
+        sooho.putAll("h1",animeMap);
+
+        Map<Object, Object> h1 = sooho.entries("h1");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        h1.entrySet().forEach(System.out::println);
+
+    }
 
 
     @Test
