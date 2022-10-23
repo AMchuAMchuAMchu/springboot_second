@@ -4,7 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/anime_test01
     username: root
     password: root
-    type: com.alibaba.druid.pool.DruidDataSource
+#    type: com.alibaba.druid.pool.DruidDataSource
 
 animeconfig:
   num01: ${random.int}
