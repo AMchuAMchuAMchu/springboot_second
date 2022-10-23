@@ -20,9 +20,9 @@ class SpringbootRedis01ApplicationTests {
 
         ssvo.set("name01","alicization");
 
-        String name02 = ssvo.get("name02");
+        String name02 = ssvo.get("name01");
 
-        System.out.println(name01);
+        System.out.println(name02);
 
 
     }
