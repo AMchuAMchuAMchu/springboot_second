@@ -18,6 +18,7 @@ class SpringbootRedis01ApplicationTests {
     private RedisTemplate<String,String> redisTemplate;
 
 
+
     @Test
     void testSet(){
 
@@ -25,7 +26,7 @@ class SpringbootRedis01ApplicationTests {
 
         ssso.add("s1","ryo","EGOIST","chelly","chelly");
 
-        Set<String> l1 = ssso.members("l1");
+        Set<String> l1 = ssso.members("s1");
 
         l1.forEach(System.out::println);
 
