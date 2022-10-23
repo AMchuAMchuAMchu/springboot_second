@@ -22,7 +22,7 @@ class SpringbootRedis01ApplicationTests {
 
         String name02 = ssvo.get("name02");
 
-        System.out.println(name02);
+        System.out.println(name01);
 
 
     }
