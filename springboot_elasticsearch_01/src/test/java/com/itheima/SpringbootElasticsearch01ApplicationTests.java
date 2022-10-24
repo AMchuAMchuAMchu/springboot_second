@@ -1,8 +1,10 @@
 package com.itheima;
 
+import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,17 @@ class SpringbootElasticsearch01ApplicationTests {
     private RestHighLevelClient restHighLevelClient;
 
     @Test
+    void testInsertJson(){
+
+        AnimeInfo animeInfo = new AnimeInfo();
+        animeInfo.setName("我的青春恋爱物语果然有问题");
+        animeInfo.setTime(2015);
+//        restHighLevelClient.
+
+    }
+
+
+    @Test
     void testInsert() throws IOException {
 
         CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
@@ -24,6 +37,17 @@ class SpringbootElasticsearch01ApplicationTests {
 
 
 
+    }
+
+
+    @AfterEach
+    void closeRest(){
+
+        try {
+            restHighLevelClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
