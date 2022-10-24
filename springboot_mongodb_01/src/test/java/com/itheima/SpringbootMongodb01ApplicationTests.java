@@ -6,11 +6,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.List;
+
 @SpringBootTest
 class SpringbootMongodb01ApplicationTests {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+
+    @Test
+    void testUpdate(){
+
+
+
+    }
+
+    @Test
+    void testFind(){
+
+        List<AnimeInfo> all = mongoTemplate.findAll(AnimeInfo.class,"anime01");
+
+        all.forEach(System.out::println);
+
+
+
+    }
 
     @Test
     void testInsertOne() {
