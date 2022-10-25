@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -47,7 +48,9 @@ class SpringbootElasticsearch01ApplicationTests {
 
         IndexRequest indexRequest = new IndexRequest();
 
-        indexRequest.index("anime01").id("1").source();
+        indexRequest.index("anime01").id("1");
+
+        restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
 
 
 
