@@ -3,6 +3,8 @@ package com.itheima;
 import com.google.gson.Gson;
 import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
@@ -23,13 +25,16 @@ class SpringbootElasticsearch01ApplicationTests {
     private RestHighLevelClient restHighLevelClient;
 
     @Test
-    void testInsertJson() throws IOException {
+    void testGet() throws IOException {
 
+        GetRequest getRequest = new GetRequest();
+        getRequest.index("anime01").id("1");
+        GetResponse documentFields = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);
 
+        System.out.println(documentFields);
 
 
     }
-
 
     @Test
     void testInsert() throws IOException {
