@@ -4,6 +4,8 @@ import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.mapper.DynamicTemplate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +27,20 @@ class SpringbootElasticsearch01ApplicationTests {
         animeInfo.setTime(2015);
 //        restHighLevelClient.
 
+
     }
 
 
     @Test
     void testInsert() throws IOException {
 
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
-        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+//        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
+//        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
 
+        CreateIndexRequest createIndexRequest = new CreateIndexRequest();
+        String index = "anime02";
+        createIndexRequest.source(index, XContentType.JSON);
+        restHighLevelClient.indices().create(createIndexRequest,RequestOptions.DEFAULT);
 
 
 
