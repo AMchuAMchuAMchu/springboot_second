@@ -25,15 +25,7 @@ class SpringbootElasticsearch01ApplicationTests {
     @Test
     void testInsertJson() throws IOException {
 
-        AnimeInfo animeInfo = new AnimeInfo();
-        animeInfo.setName("我的青春恋爱物语果然有问题");
-        animeInfo.setTime(2015);
-//        restHighLevelClient.
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
-        Gson gson = new Gson();
-        String s = gson.toJson(animeInfo);
-        createIndexRequest.source(s,XContentType.JSON);
-//        restHighLevelClient.indices()
+
 
 
     }
@@ -46,8 +38,13 @@ class SpringbootElasticsearch01ApplicationTests {
 //
 //        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
 //
-
+        AnimeInfo animeInfo = new AnimeInfo();
+        animeInfo.setName("我的青春恋爱物语果然有问题");
+        animeInfo.setTime(2015);
+        Gson gson = new Gson();
+        String s = gson.toJson(animeInfo);
         IndexRequest indexRequest = new IndexRequest("anime01");
+        indexRequest.id("1").source(s,XContentType.JSON);
         restHighLevelClient.index(indexRequest,RequestOptions.DEFAULT);
 
 
