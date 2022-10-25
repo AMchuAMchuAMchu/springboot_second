@@ -9,11 +9,14 @@ import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.mapper.DynamicTemplate;
+import org.elasticsearch.search.SearchHits;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,18 @@ class SpringbootElasticsearch01ApplicationTests {
 
     @Autowired
     private AnimeInfoDao animeInfoDao;
+
+    @Test
+    void testSearch() throws IOException {
+
+        SearchRequest searchRequest = new SearchRequest();
+        searchRequest.indices("anime02");
+        SearchResponse search = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        SearchHits hits = search.getHits();
+
+        hits.forEach(System.out::println);
+
+    }
 
     @Test
     void testBulkInsert() throws IOException {
