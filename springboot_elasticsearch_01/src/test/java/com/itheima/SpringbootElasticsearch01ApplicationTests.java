@@ -3,6 +3,7 @@ package com.itheima;
 import com.google.gson.Gson;
 import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
+import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -31,7 +32,7 @@ class SpringbootElasticsearch01ApplicationTests {
         Gson gson = new Gson();
         String s = gson.toJson(animeInfo);
         createIndexRequest.source(s,XContentType.JSON);
-        restHighLevelClient.indices().create(createIndexRequest,RequestOptions.DEFAULT);
+//        restHighLevelClient.indices()
 
 
     }
@@ -39,12 +40,16 @@ class SpringbootElasticsearch01ApplicationTests {
 
     @Test
     void testInsert() throws IOException {
+//
+//        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
+//
+//        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
 
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
-        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+        IndexRequest indexRequest = new IndexRequest();
 
+        indexRequest.index("anime01").id("1");
 
-
+//        indexRequest.create(true);
 
 
     }
