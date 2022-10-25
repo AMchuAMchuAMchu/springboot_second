@@ -1,8 +1,11 @@
 package com.itheima;
 
 import com.google.gson.Gson;
+import com.itheima.dao.AnimeInfoDao;
 import com.itheima.pojo.AnimeInfo;
+import com.itheima.pojo.AnimeInfoOO;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
+import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -17,12 +20,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.util.List;
 
 @SpringBootTest
 class SpringbootElasticsearch01ApplicationTests {
 
     @Autowired
     private RestHighLevelClient restHighLevelClient;
+
+    @Autowired
+    private AnimeInfoDao animeInfoDao;
+
+    @Test
+    void testBulkInsert() throws IOException {
+
+        BulkRequest bulkRequest = new BulkRequest();
+
+        List<AnimeInfo> animeInfos = animeInfoDao.selectList(null);
+
+        animeInfos.forEach((animeInfo)->{
+            IndexRequest indexRequest = new IndexRequest();
+            Gson gson = new Gson();
+
+            String s = gson.toJson(animeInfo);
+            indexRequest.index("anime02").id(animeInfo.getId().toString()).source(s,XContentType.JSON);
+
+            bulkRequest.add(indexRequest);
+
+        });
+
+        restHighLevelClient.bulk(bulkRequest,RequestOptions.DEFAULT);
+
+    }
+
 
     @Test
     void testGet() throws IOException {
@@ -43,7 +73,7 @@ class SpringbootElasticsearch01ApplicationTests {
 //
 //        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
 //
-        AnimeInfo animeInfo = new AnimeInfo();
+        AnimeInfoOO animeInfo = new AnimeInfoOO();
         animeInfo.setName("我的青春恋爱物语果然有问题");
         animeInfo.setTime(2015);
         Gson gson = new Gson();
