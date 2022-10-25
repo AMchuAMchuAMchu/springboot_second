@@ -41,16 +41,16 @@ class SpringbootElasticsearch01ApplicationTests {
 
     @Test
     void testInsert() throws IOException {
-//
+
 //        CreateIndexRequest createIndexRequest = new CreateIndexRequest("anime01");
 //
 //        restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+//
 
-        IndexRequest indexRequest = new IndexRequest();
+        IndexRequest indexRequest = new IndexRequest("anime01");
+        restHighLevelClient.index(indexRequest,RequestOptions.DEFAULT);
 
-        indexRequest.index("anime01").id("1").source();
 
-        restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
 
 
 
