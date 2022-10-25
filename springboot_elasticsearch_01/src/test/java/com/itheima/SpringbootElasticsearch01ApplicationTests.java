@@ -31,7 +31,7 @@ class SpringbootElasticsearch01ApplicationTests {
         getRequest.index("anime01").id("1");
         GetResponse documentFields = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);
 
-        System.out.println(documentFields.getField("_source"));
+        System.out.println(documentFields);
 
 
     }
