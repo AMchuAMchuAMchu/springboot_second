@@ -47,9 +47,8 @@ class SpringbootElasticsearch01ApplicationTests {
 
         IndexRequest indexRequest = new IndexRequest();
 
-        indexRequest.index("anime01").id("1");
+        indexRequest.index("anime01").id("1").source();
 
-//        indexRequest.create(true);
 
 
     }
